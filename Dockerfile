@@ -1,5 +1,7 @@
 FROM       ubuntu:latest
 
+ARG        qdbd_version
+
 # Fixing debconf warning about TREM
 ENV        DEBIAN_FRONTEND teletype
 
@@ -9,7 +11,7 @@ RUN        apt-get clean && apt-get update && apt-get install -y --no-install-re
 RUN        locale-gen en_US.UTF-8
 
 # Decompress the tarball in the container
-ADD        qdb-*-linux-64bit-server.tar.gz /usr/
+ADD        qdb-$qdbd-version-linux-64bit-server.tar.gz /usr/
 
 # Add the wrapper script
 ADD        qdbd-docker-wrapper.sh /usr/bin/
